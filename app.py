@@ -1,5 +1,5 @@
 from flask import Flask, send_file, request, render_template
-from .proofpoint_parser import ProofPointParser
+from proofpoint_parser import ProofPointParser
 import io
 app = Flask(__name__)
 
@@ -16,3 +16,7 @@ def return_csv():
         mem.seek(0)
         return send_file(mem, as_attachment=True, attachment_filename='output.csv', mimetype='text/csv')
     return render_template('upload_form.html')
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
